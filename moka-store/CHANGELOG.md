@@ -1,5 +1,9 @@
 # Unreleased
 
+# 0.16.0
+
+- Update `tower-sessions-ext` to `0.15.0`
+
 # 0.15.0
 
 - Update `tower-sessions-ext` to `0.14.0`
