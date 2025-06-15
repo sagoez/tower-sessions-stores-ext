@@ -11,7 +11,7 @@ http-body-util = "0.1"
 hyper = "1.0"
 time = "0.3.30"
 tokio = { version = "1", features = ["full"] }
-tower = { version = "0.4.13", features = ["util"] }
+tower = { version = "0.5.2", features = ["util"] }
 tower-cookies = "0.11.0"
 tower-sessions-ext = "0.14.0"
 tower-sessions-ext-sqlx-store = { path = "../sqlx-store/", features = [

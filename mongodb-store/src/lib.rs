@@ -81,10 +81,7 @@ impl MongoDBStore {
 impl ExpiredDeletion for MongoDBStore {
     async fn delete_expired(&self) -> session_store::Result<()> {
         self.collection
-            .delete_many(
-                doc! { "expireAt": {"$lt": OffsetDateTime::now_utc()} },
-                None,
-            )
+            .delete_many(doc! { "expireAt": {"$lt": OffsetDateTime::now_utc()} })
             .await
             .map_err(MongoDBStoreError::MongoDB)?;
 
@@ -105,11 +102,8 @@ impl SessionStore for MongoDBStore {
         .map_err(MongoDBStoreError::BsonSerialize)?;
 
         self.collection
-            .update_one(
-                doc! { "_id": record.id.to_string() },
-                doc! { "$set": doc },
-                UpdateOptions::builder().upsert(true).build(),
-            )
+            .update_one(doc! { "_id": record.id.to_string() }, doc! { "$set": doc })
+            .with_options(UpdateOptions::builder().upsert(true).build())
             .await
             .map_err(MongoDBStoreError::MongoDB)?;
 
@@ -119,13 +113,10 @@ impl SessionStore for MongoDBStore {
     async fn load(&self, session_id: &Id) -> session_store::Result<Option<Record>> {
         let doc = self
             .collection
-            .find_one(
-                doc! {
-                    "_id": session_id.to_string(),
-                    "expireAt": {"$gt": OffsetDateTime::now_utc()}
-                },
-                None,
-            )
+            .find_one(doc! {
+                "_id": session_id.to_string(),
+                "expireAt": {"$gt": OffsetDateTime::now_utc()}
+            })
             .await
             .map_err(MongoDBStoreError::MongoDB)?;
 
@@ -140,7 +131,7 @@ impl SessionStore for MongoDBStore {
 
     async fn delete(&self, session_id: &Id) -> session_store::Result<()> {
         self.collection
-            .delete_one(doc! { "_id": session_id.to_string() }, None)
+            .delete_one(doc! { "_id": session_id.to_string() })
             .await
             .map_err(MongoDBStoreError::MongoDB)?;
 
