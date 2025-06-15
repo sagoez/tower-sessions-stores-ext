@@ -1,5 +1,5 @@
 pub use sqlx;
-use tower_sessions_core::session_store;
+use tower_sessions_ext_core::session_store;
 
 #[cfg(feature = "mysql")]
 #[cfg_attr(docsrs, doc(cfg(feature = "mysql")))]

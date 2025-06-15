@@ -1,10 +1,13 @@
 <h1 align="center">
-    tower-sessions-sqlx-store
+    tower-sessions-ext-sqlx-store
 </h1>
 
 <p align="center">
-    SQLx session stores for `tower-sessions`.
+    SQLx session stores for `tower-sessions-ext`.
 </p>
+
+> [!NOTE]
+> This is a maintained fork of the original implementation. The repository has been migrated from `maxcountryman` to `sagoez` to ensure continued maintenance and support.
 
 ## 🎨 Overview
 
@@ -14,7 +17,7 @@
   the database using [MessagePack](https://github.com/3Hren/msgpack-rust),
   a compact self-describing serialization format.
 - **Custom schema and table names**: use the default of
-  `tower_sessions.session` or set your own schema and table names;
+  `tower_sessions_ext.session` or set your own schema and table names;
   except for SQLite, in which you can define just the table name.
 - **Migrations**: the database table creation is handled by the
   `migrate` function on the store, which does just that.
@@ -33,8 +36,8 @@ use axum::{response::IntoResponse, routing::get, Router};
 use serde::{Deserialize, Serialize};
 use time::Duration;
 use tokio::{signal, task::AbortHandle};
-use tower_sessions::{session_store::ExpiredDeletion, Expiry, Session, SessionManagerLayer};
-use tower_sessions_sqlx_store::{sqlx::MySqlPool, MySqlStore};
+use tower_sessions_ext::{session_store::ExpiredDeletion, Expiry, Session, SessionManagerLayer};
+use tower_sessions_ext_sqlx_store::{sqlx::MySqlPool, MySqlStore};
 
 const COUNTER_KEY: &str = "counter";
 
@@ -113,8 +116,8 @@ use axum::{response::IntoResponse, routing::get, Router};
 use serde::{Deserialize, Serialize};
 use time::Duration;
 use tokio::{signal, task::AbortHandle};
-use tower_sessions::{session_store::ExpiredDeletion, Expiry, Session, SessionManagerLayer};
-use tower_sessions_sqlx_store::{sqlx::PgPool, PostgresStore};
+use tower_sessions_ext::{session_store::ExpiredDeletion, Expiry, Session, SessionManagerLayer};
+use tower_sessions_ext_sqlx_store::{sqlx::PgPool, PostgresStore};
 
 const COUNTER_KEY: &str = "counter";
 
@@ -193,8 +196,8 @@ use axum::{response::IntoResponse, routing::get, Router};
 use serde::{Deserialize, Serialize};
 use time::Duration;
 use tokio::{signal, task::AbortHandle};
-use tower_sessions::{session_store::ExpiredDeletion, Expiry, Session, SessionManagerLayer};
-use tower_sessions_sqlx_store::{sqlx::SqlitePool, SqliteStore};
+use tower_sessions_ext::{session_store::ExpiredDeletion, Expiry, Session, SessionManagerLayer};
+use tower_sessions_ext_sqlx_store::{sqlx::SqlitePool, SqliteStore};
 
 const COUNTER_KEY: &str = "counter";
 
@@ -262,3 +265,7 @@ async fn shutdown_signal(deletion_task_abort_handle: AbortHandle) {
     }
 }
 ```
+
+## 🙏 Acknowledgments
+
+Special thanks to [maxcountryman](https://github.com/maxcountryman) for the original implementation and groundwork for this project.

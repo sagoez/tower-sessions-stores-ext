@@ -1,15 +1,15 @@
 [package]
-name = "tower-sessions-redis-store"
-description = "Redis session store for `tower-sessions`."
+name = "tower-sessions-ext-redis-store"
+description = "Redis session store for `tower-sessions-ext`."
 version = "0.16.0"
 edition = "2021"
 authors = ["Max Countryman <hello@maxcountryman.com>"]
 license = "MIT"
-homepage = "https://github.com/maxcountryman/tower-sessions-stores"
+homepage = "https://github.com/maxcountryman/tower-sessions-ext-stores"
 keywords = ["axum", "sessions", "cookie", "tower", "redis"]
 categories = ["asynchronous", "network-programming", "web-programming"]
-repository = "https://github.com/maxcountryman/tower-sessions-stores"
-documentation = "https://docs.rs/tower-sessions-redis-store"
+repository = "https://github.com/maxcountryman/tower-sessions-ext-stores"
+documentation = "https://docs.rs/tower-sessions-ext-redis-store"
 readme = "README.md"
 
 [dependencies]
@@ -18,11 +18,11 @@ fred = "10.0"
 rmp-serde = "1.1.2"
 thiserror = "2.0"
 time = "0.3.31"
-tower-sessions-core = "0.14.0"
+tower-sessions-ext-core = "0.14.0"
 
 [dev-dependencies]
 axum = "0.8.1"
-tower-sessions = "0.14.0"
+tower-sessions-ext = "0.14.0"
 tokio = { version = "1.32.0", features = ["full"] }
 tokio-test = "0.4.3"
 serde = "1"

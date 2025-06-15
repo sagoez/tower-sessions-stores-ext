@@ -1,10 +1,13 @@
 <h1 align="center">
-    tower-sessions-moka-store
+    tower-sessions-ext-moka-store
 </h1>
 
 <p align="center">
-    Moka session store for `tower-sessions`.
+    Moka session store for `tower-sessions-ext`.
 </p>
+
+> [!NOTE]
+> This is a maintained fork of the original implementation. The repository has been migrated from `maxcountryman` to `sagoez` to ensure continued maintenance and support.
 
 ## 🤸 Usage
 
@@ -14,9 +17,9 @@ use std::net::SocketAddr;
 use axum::{response::IntoResponse, routing::get, Router};
 use serde::{Deserialize, Serialize};
 use time::Duration;
-use tower_sessions::{CachingSessionStore, Expiry, Session, SessionManagerLayer};
-use tower_sessions_moka_store::MokaStore;
-use tower_sessions_sqlx_store::{sqlx::SqlitePool, SqliteStore};
+use tower_sessions_ext::{CachingSessionStore, Expiry, Session, SessionManagerLayer};
+use tower_sessions_ext_moka_store::MokaStore;
+use tower_sessions_ext_sqlx_store::{sqlx::SqlitePool, SqliteStore};
 
 const COUNTER_KEY: &str = "counter";
 
@@ -51,4 +54,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     Ok(())
 }
-```
+
+## 🙏 Acknowledgments
+
+Special thanks to [maxcountryman](https://github.com/maxcountryman) for the original implementation and groundwork for this project.

@@ -4,8 +4,8 @@ use axum::{response::IntoResponse, routing::get, Router};
 use serde::{Deserialize, Serialize};
 use time::Duration;
 use tokio::{signal, task::AbortHandle};
-use tower_sessions::{Expiry, Session, SessionManagerLayer};
-use tower_sessions_redis_store::{fred::prelude::*, RedisStore};
+use tower_sessions_ext::{Expiry, Session, SessionManagerLayer};
+use tower_sessions_ext_redis_store::{fred::prelude::*, RedisStore};
 
 const COUNTER_KEY: &str = "counter";
 

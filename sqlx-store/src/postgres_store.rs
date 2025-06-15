@@ -1,7 +1,7 @@
 use async_trait::async_trait;
 use sqlx::{PgConnection, PgPool};
 use time::OffsetDateTime;
-use tower_sessions_core::{
+use tower_sessions_ext_core::{
     session::{Id, Record},
     session_store, ExpiredDeletion, SessionStore,
 };
@@ -22,7 +22,7 @@ impl PostgresStore {
     /// # Examples
     ///
     /// ```rust,no_run
-    /// use tower_sessions_sqlx_store::{sqlx::PgPool, PostgresStore};
+    /// use tower_sessions_ext_sqlx_store::{sqlx::PgPool, PostgresStore};
     ///
     /// # tokio_test::block_on(async {
     /// let database_url = std::option_env!("DATABASE_URL").unwrap();
@@ -33,7 +33,7 @@ impl PostgresStore {
     pub fn new(pool: PgPool) -> Self {
         Self {
             pool,
-            schema_name: "tower_sessions".to_string(),
+            schema_name: "tower_sessions_ext".to_string(),
             table_name: "session".to_string(),
         }
     }
@@ -75,7 +75,7 @@ impl PostgresStore {
     /// # Examples
     ///
     /// ```rust,no_run
-    /// use tower_sessions_sqlx_store::{sqlx::PgPool, PostgresStore};
+    /// use tower_sessions_ext_sqlx_store::{sqlx::PgPool, PostgresStore};
     ///
     /// # tokio_test::block_on(async {
     /// let database_url = std::option_env!("DATABASE_URL").unwrap();

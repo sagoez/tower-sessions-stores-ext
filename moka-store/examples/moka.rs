@@ -3,9 +3,9 @@ use std::net::SocketAddr;
 use axum::{response::IntoResponse, routing::get, Router};
 use serde::{Deserialize, Serialize};
 use time::Duration;
-use tower_sessions::{CachingSessionStore, Expiry, Session, SessionManagerLayer};
-use tower_sessions_moka_store::MokaStore;
-use tower_sessions_sqlx_store::{sqlx::SqlitePool, SqliteStore};
+use tower_sessions_ext::{CachingSessionStore, Expiry, Session, SessionManagerLayer};
+use tower_sessions_ext_moka_store::MokaStore;
+use tower_sessions_ext_sqlx_store::{sqlx::SqlitePool, SqliteStore};
 
 const COUNTER_KEY: &str = "counter";
 

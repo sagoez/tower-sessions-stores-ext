@@ -4,8 +4,8 @@ use axum::{response::IntoResponse, routing::get, Router};
 use serde::{Deserialize, Serialize};
 use time::Duration;
 use tokio::{signal, task::AbortHandle};
-use tower_sessions::{session_store::ExpiredDeletion, Expiry, Session, SessionManagerLayer};
-use tower_sessions_sqlx_store::{sqlx::SqlitePool, SqliteStore};
+use tower_sessions_ext::{session_store::ExpiredDeletion, Expiry, Session, SessionManagerLayer};
+use tower_sessions_ext_sqlx_store::{sqlx::SqlitePool, SqliteStore};
 
 const COUNTER_KEY: &str = "counter";
 

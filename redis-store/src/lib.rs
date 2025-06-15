@@ -7,7 +7,7 @@ use fred::{
     types::{Expiration, SetOptions},
 };
 use time::OffsetDateTime;
-use tower_sessions_core::{
+use tower_sessions_ext_core::{
     session::{Id, Record},
     session_store, SessionStore,
 };
@@ -46,7 +46,7 @@ impl<C: KeysInterface + Send + Sync> RedisStore<C> {
     /// # Examples
     ///
     /// ```rust,no_run
-    /// use tower_sessions_redis_store::{fred::prelude::*, RedisStore};
+    /// use tower_sessions_ext_redis_store::{fred::prelude::*, RedisStore};
     ///
     /// # tokio_test::block_on(async {
     /// let pool = Pool::new(Config::default(), None, None, None, 6).unwrap();

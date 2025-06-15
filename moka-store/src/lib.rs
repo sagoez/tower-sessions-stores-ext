@@ -3,7 +3,7 @@ use std::time::{Duration as StdDuration, Instant as StdInstant};
 use async_trait::async_trait;
 use moka::{future::Cache, Expiry};
 use time::OffsetDateTime;
-use tower_sessions_core::{
+use tower_sessions_ext_core::{
     session::{Id, Record},
     session_store, SessionStore,
 };
@@ -24,8 +24,8 @@ impl MokaStore {
     /// # Examples
     ///
     /// ```rust
-    /// use tower_sessions::MemoryStore;
-    /// use tower_sessions_moka_store::MokaStore;
+    /// use tower_sessions_ext::MemoryStore;
+    /// use tower_sessions_ext_moka_store::MokaStore;
     /// let session_store = MokaStore::new(Some(2_000));
     /// ```
     pub fn new(max_capacity: Option<u64>) -> Self {

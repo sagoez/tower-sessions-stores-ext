@@ -1,7 +1,7 @@
 use async_trait::async_trait;
 use sqlx::{sqlite::SqlitePool, SqliteConnection};
 use time::OffsetDateTime;
-use tower_sessions_core::{
+use tower_sessions_ext_core::{
     session::{Id, Record},
     session_store::{self, ExpiredDeletion},
     SessionStore,
@@ -22,7 +22,7 @@ impl SqliteStore {
     /// # Examples
     ///
     /// ```rust,no_run
-    /// use tower_sessions_sqlx_store::{sqlx::SqlitePool, SqliteStore};
+    /// use tower_sessions_ext_sqlx_store::{sqlx::SqlitePool, SqliteStore};
     ///
     /// # tokio_test::block_on(async {
     /// let pool = SqlitePool::connect("sqlite::memory:").await.unwrap();
@@ -32,7 +32,7 @@ impl SqliteStore {
     pub fn new(pool: SqlitePool) -> Self {
         Self {
             pool,
-            table_name: "tower_sessions".into(),
+            table_name: "tower_sessions_ext".into(),
         }
     }
 

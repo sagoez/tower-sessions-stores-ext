@@ -1,10 +1,13 @@
 <h1 align="center">
-    tower-sessions-mongodb-store
+    tower-sessions-ext-mongodb-store
 </h1>
 
 <p align="center">
-    MongoDB session store for `tower-sessions`.
+    MongoDB session store for `tower-sessions-ext`.
 </p>
+
+> [!NOTE]
+> This is a maintained fork of the original implementation. The repository has been migrated from `maxcountryman` to `sagoez` to ensure continued maintenance and support.
 
 ## 🤸 Usage
 
@@ -15,9 +18,9 @@ use axum::{response::IntoResponse, routing::get, Router};
 use serde::{Deserialize, Serialize};
 use time::Duration;
 use tokio::{signal, task::AbortHandle};
-use tower_sessions::{Expiry, Session, SessionManagerLayer};
-use tower_sessions_core::ExpiredDeletion;
-use tower_sessions_mongodb_store::{mongodb::Client, MongoDBStore};
+use tower_sessions_ext::{Expiry, Session, SessionManagerLayer};
+use tower_sessions_ext_core::ExpiredDeletion;
+use tower_sessions_ext_mongodb_store::{mongodb::Client, MongoDBStore};
 
 const COUNTER_KEY: &str = "counter";
 
@@ -34,7 +37,7 @@ async fn handler(session: Session) -> impl IntoResponse {
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let database_url = std::option_env!("DATABASE_URL").expect("Missing DATABASE_URL.");
     let client = Client::with_uri_str(database_url).await?;
-    let session_store = MongoDBStore::new(client, "tower-sessions".to_string());
+    let session_store = MongoDBStore::new(client, "tower-sessions-ext".to_string());
 
     let deletion_task = tokio::task::spawn(
         session_store
@@ -84,4 +87,7 @@ async fn shutdown_signal(deletion_task_abort_handle: AbortHandle) {
         _ = terminate => { deletion_task_abort_handle.abort() },
     }
 }
-```
+
+## 🙏 Acknowledgments
+
+Special thanks to [maxcountryman](https://github.com/maxcountryman) for the original implementation and groundwork for this project.

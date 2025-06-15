@@ -4,7 +4,7 @@ pub use mongodb;
 use mongodb::{options::UpdateOptions, Client, Collection};
 use serde::{Deserialize, Serialize};
 use time::OffsetDateTime;
-use tower_sessions_core::{
+use tower_sessions_ext_core::{
     session::{Id, Record},
     session_store, ExpiredDeletion, SessionStore,
 };
@@ -62,7 +62,7 @@ impl MongoDBStore {
     /// # Examples
     ///
     /// ```rust,no_run
-    /// use tower_sessions_mongodb_store::{mongodb::Client, MongoDBStore};
+    /// use tower_sessions_ext_mongodb_store::{mongodb::Client, MongoDBStore};
     ///
     /// # tokio_test::block_on(async {
     /// let database_url = std::option_env!("DATABASE_URL").unwrap();

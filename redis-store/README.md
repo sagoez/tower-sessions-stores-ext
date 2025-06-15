@@ -1,10 +1,13 @@
 <h1 align="center">
-    tower-sessions-redis-store
+    tower-sessions-ext-redis-store
 </h1>
 
 <p align="center">
-    Redis via `fred` session store for `tower-sessions`.
+    Redis via `fred` session store for `tower-sessions-ext`.
 </p>
+
+> [!NOTE]
+> This is a maintained fork of the original implementation. The repository has been migrated from `maxcountryman` to `sagoez` to ensure continued maintenance and support.
 
 ## 🤸 Usage
 
@@ -14,8 +17,8 @@ use std::net::SocketAddr;
 use axum::{response::IntoResponse, routing::get, Router};
 use serde::{Deserialize, Serialize};
 use time::Duration;
-use tower_sessions::{Expiry, Session, SessionManagerLayer};
-use tower_sessions_redis_store::{fred::prelude::*, RedisStore};
+use tower_sessions_ext::{Expiry, Session, SessionManagerLayer};
+use tower_sessions_ext_redis_store::{fred::prelude::*, RedisStore};
 
 const COUNTER_KEY: &str = "counter";
 
@@ -50,4 +53,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     Ok(())
 }
-```
+
+## 🙏 Acknowledgments
+
+Special thanks to [maxcountryman](https://github.com/maxcountryman) for the original implementation and groundwork for this project.

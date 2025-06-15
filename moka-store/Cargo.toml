@@ -1,27 +1,27 @@
 [package]
-name = "tower-sessions-moka-store"
-description = "Moka session store for `tower-sessions`."
+name = "tower-sessions-ext-moka-store"
+description = "Moka session store for `tower-sessions-ext`."
 version = "0.15.0"
 edition = "2021"
 authors = ["Max Countryman <hello@maxcountryman.com>"]
 license = "MIT"
-homepage = "https://github.com/maxcountryman/tower-sessions-stores"
+homepage = "https://github.com/maxcountryman/tower-sessions-ext-stores"
 keywords = ["axum", "sessions", "cookie", "tower", "moka"]
 categories = ["asynchronous", "network-programming", "web-programming"]
-repository = "https://github.com/maxcountryman/tower-sessions-stores"
-documentation = "https://docs.rs/tower-sessions-moka-store"
+repository = "https://github.com/maxcountryman/tower-sessions-ext-stores"
+documentation = "https://docs.rs/tower-sessions-ext-moka-store"
 readme = "README.md"
 
 [dependencies]
 async-trait = "0.1.77"
 moka = { version = "0.12.0", features = ["future"] }
 time = "0.3.31"
-tower-sessions-core = "0.14.0"
+tower-sessions-ext-core = "0.14.0"
 
 [dev-dependencies]
 axum = "0.8.1"
-tower-sessions = "0.14.0"
-tower-sessions-sqlx-store = { path = "../sqlx-store/", features = ["sqlite"] }
+tower-sessions-ext = "0.14.0"
+tower-sessions-ext-sqlx-store = { path = "../sqlx-store/", features = ["sqlite"] }
 tokio = { version = "1.32.0", features = ["full"] }
 tokio-test = "0.4.3"
 serde = "1"
